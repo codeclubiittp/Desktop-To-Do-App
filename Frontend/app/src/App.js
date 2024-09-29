@@ -1,5 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './components/sidebar';
+import TaskList from './components/tasklist';
+import TodayPage from './pages/Today';
+import InboxPage from './pages/Inbox';
+import styled from 'styled-components';
+
+const Layout = styled.div`
+  display: flex; /* Makes it a flex container */
+`;
+
+const Sidestyle = styled.div`
+  width: 250px;
+  background-color: #f4f4f4;
+  height: 100vh;
+`;
+
+const MainContent = styled.div`
+  flex-grow: 1; 
+  background-color: #ffffff;
+  padding: 20px;
+`;
+
+
 
 function App() {
     // const [message, setMessage] = useState('');
@@ -15,12 +37,15 @@ function App() {
     // };
 
     return (
-        <div>
-            {/* <button onClick={sendMessage}>Send Message</button>
-            <p>Message from Electron: {message}</p> */}
 
+        <Layout>
+          <Sidestyle>
             <Sidebar />
-        </div>
+          </Sidestyle>
+          <MainContent>
+            <InboxPage />
+          </MainContent>
+        </Layout>
     );
 }
 
