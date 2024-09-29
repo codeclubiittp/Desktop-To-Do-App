@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Search from './components/Search';
 import Sidebar from './components/sidebar';
 import TaskList from './components/tasklist';
 import TodayPage from './pages/Today';
@@ -22,22 +24,19 @@ const MainContent = styled.div`
 `;
 
 
-
 function App() {
-    // const [message, setMessage] = useState('');
-
-    // useEffect(() => {
-    //     window.api.receive('response-channel', (message) => {
-    //         setMessage(message);
-    //     });
-    // }, []);
-
-    // const sendMessage = () => {
-    //     window.api.send('message-channel', 'Hello from React!');
-    // };
-
     return (
-
+//         <Router>
+//             <div>
+//                 <Sidebar /> {/* If you want a sidebar in all routes */}
+//                 <nav>
+//                     <Link to="/search">Go to Search</Link>
+//                 </nav>
+//                 <Routes>
+//                     <Route path="/search" element={<Search />} />
+//                 </Routes>
+//             </div>
+//         </Router>
         <Layout>
           <Sidestyle>
             <Sidebar />
