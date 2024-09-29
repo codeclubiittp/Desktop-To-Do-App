@@ -1,21 +1,50 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Search from './components/Search';
-import Sidebar from './components/sidebar'; // Assuming Sidebar is a part of your layout
+import Sidebar from './components/sidebar';
+import TaskList from './components/tasklist';
+import TodayPage from './pages/Today';
+import InboxPage from './pages/Inbox';
+import styled from 'styled-components';
+
+const Layout = styled.div`
+  display: flex; /* Makes it a flex container */
+`;
+
+const Sidestyle = styled.div`
+  width: 250px;
+  background-color: #f4f4f4;
+  height: 100vh;
+`;
+
+const MainContent = styled.div`
+  flex-grow: 1; 
+  background-color: #ffffff;
+  padding: 20px;
+`;
+
 
 function App() {
     return (
-        <Router>
-            <div>
-                <Sidebar /> {/* If you want a sidebar in all routes */}
-                <nav>
-                    <Link to="/search">Go to Search</Link>
-                </nav>
-                <Routes>
-                    <Route path="/search" element={<Search />} />
-                </Routes>
-            </div>
-        </Router>
+//         <Router>
+//             <div>
+//                 <Sidebar /> {/* If you want a sidebar in all routes */}
+//                 <nav>
+//                     <Link to="/search">Go to Search</Link>
+//                 </nav>
+//                 <Routes>
+//                     <Route path="/search" element={<Search />} />
+//                 </Routes>
+//             </div>
+//         </Router>
+        <Layout>
+          <Sidestyle>
+            <Sidebar />
+          </Sidestyle>
+          <MainContent>
+            <InboxPage />
+          </MainContent>
+        </Layout>
     );
 }
 
