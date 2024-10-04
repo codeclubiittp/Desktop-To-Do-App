@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './components/sidebar';
+import CalendarPage from './components/Upcoming/CalenderPage';
 
 function App() {
     // const [message, setMessage] = useState('');
@@ -19,7 +20,7 @@ function App() {
             {/* <button onClick={sendMessage}>Send Message</button>
             <p>Message from Electron: {message}</p> */}
 
-            <Sidebar />
+            <CalendarPage />
         </div>
     );
 }
