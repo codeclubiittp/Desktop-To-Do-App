@@ -6,6 +6,7 @@ import TaskList from './components/tasklist';
 import TodayPage from './pages/Today';
 import InboxPage from './pages/Inbox';
 import styled from 'styled-components';
+import VerticalNav from './components/VerticalNav';
 
 const Layout = styled.div`
   display: flex; /* Makes it a flex container */
@@ -42,7 +43,8 @@ function App() {
             <Sidebar />
           </Sidestyle>
           <MainContent>
-            <InboxPage />
+            {/* <InboxPage /> */}
+            <VerticalNav />
           </MainContent>
         </Layout>
     );
