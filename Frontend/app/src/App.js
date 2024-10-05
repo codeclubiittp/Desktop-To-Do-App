@@ -5,6 +5,7 @@ import Sidebar from './components/sidebar';
 import TaskList from './components/tasklist';
 import TodayPage from './pages/Today';
 import InboxPage from './pages/Inbox';
+import SettingsGeneral from './pages/SettingsGeneral';
 import styled from 'styled-components';
 import VerticalNav from './components/VerticalNav';
 
@@ -44,7 +45,8 @@ function App() {
           </Sidestyle>
           <MainContent>
             {/* <InboxPage /> */}
-            <VerticalNav />
+            {/* <VerticalNav /> */}
+            <SettingsGeneral />
           </MainContent>
         </Layout>
     );

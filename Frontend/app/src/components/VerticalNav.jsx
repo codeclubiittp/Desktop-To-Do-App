@@ -8,7 +8,7 @@ const StyledSideElement = styled.div`
   width: 60px;
   height: 492px;
   background-color: #FFFFFF;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.9);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0);
   z-index: 1000;
   transform: translateY(-50%);
 
@@ -29,7 +29,7 @@ const StyledSideElement = styled.div`
     height: 30px;
     width: 30px;
     margin-right: 16px;
-    color: #000000;
+    color: #16423C;
     align-items: center;
   }
 
@@ -69,8 +69,11 @@ function VerticalNav() {
 
   return (
     <StyledSideElement>
-      <div className="item user-info">
-          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon" />
+      <div className="item">
+          <a href="/profile">
+              <i className="fa fa-home"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0m0 6a5 5 0 0 0-5 5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3a5 5 0 0 0-5-5z" clip-rule="evenodd"/></svg>
+          </a>
       </div>
 
       <div className="item">
