@@ -8,6 +8,7 @@ import InboxPage from './pages/Inbox';
 import SettingsGeneral from './pages/SettingsGeneral';
 import styled from 'styled-components';
 import VerticalNav from './components/VerticalNav';
+import SettingsProfile from './pages/SettingsProfile';
 
 const Layout = styled.div`
   display: flex; /* Makes it a flex container */
@@ -46,7 +47,8 @@ function App() {
           <MainContent>
             {/* <InboxPage /> */}
             {/* <VerticalNav /> */}
-            <SettingsGeneral />
+            {/* <SettingsGeneral /> */}
+            <SettingsProfile />
           </MainContent>
         </Layout>
     );
