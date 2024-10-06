@@ -1,27 +1,59 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Search from './components/Search';
 import Sidebar from './components/sidebar';
 import CalendarPage from './components/Upcoming/CalenderPage';
+import TaskList from './components/tasklist';
+import TodayPage from './pages/Today';
+import InboxPage from './pages/Inbox';
+import SettingsGeneral from './pages/SettingsGeneral';
+import styled from 'styled-components';
+import VerticalNav from './components/VerticalNav';
+import SettingsProfile from './pages/SettingsProfile';
+
+const Layout = styled.div`
+  display: flex; /* Makes it a flex container */
+`;
+
+const Sidestyle = styled.div`
+  width: 250px;
+  background-color: #f4f4f4;
+  height: 100vh;
+`;
+
+const MainContent = styled.div`
+  flex-grow: 1; 
+  background-color: #ffffff;
+  padding: 20px;
+`;
+
 
 function App() {
-    // const [message, setMessage] = useState('');
-
-    // useEffect(() => {
-    //     window.api.receive('response-channel', (message) => {
-    //         setMessage(message);
-    //     });
-    // }, []);
-
-    // const sendMessage = () => {
-    //     window.api.send('message-channel', 'Hello from React!');
-    // };
-
     return (
-        <div>
-            {/* <button onClick={sendMessage}>Send Message</button>
-            <p>Message from Electron: {message}</p> */}
-
+//         <Router>
+//             <div>
+//                 <Sidebar /> {/* If you want a sidebar in all routes */}
+//                 <nav>
+//                     <Link to="/search">Go to Search</Link>
+//                 </nav>
+//                 <Routes>
+//                     <Route path="/search" element={<Search />} />
+//                 </Routes>
+//             </div>
+//         </Router>
+        <Layout>
+          <Sidestyle>
+            <Sidebar />
+          </Sidestyle>
+          <MainContent>
+            {/* <InboxPage /> */}
+            {/* <VerticalNav /> */}
+            {/* <SettingsGeneral /> */}
             <CalendarPage />
-        </div>
+            <SettingsProfile />
+               
+          </MainContent>
+        </Layout>
     );
 }
 
