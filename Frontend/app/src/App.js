@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Search from './components/Search';
 import Sidebar from './components/sidebar';
+import CalendarPage from './components/Upcoming/CalenderPage';
 import TaskList from './components/tasklist';
 import TodayPage from './pages/Today';
 import InboxPage from './pages/Inbox';
@@ -48,7 +49,9 @@ function App() {
             {/* <InboxPage /> */}
             {/* <VerticalNav /> */}
             {/* <SettingsGeneral /> */}
+            <CalendarPage />
             <SettingsProfile />
+               
           </MainContent>
         </Layout>
     );
