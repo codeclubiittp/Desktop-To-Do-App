@@ -10,6 +10,7 @@ import SettingsGeneral from './pages/SettingsGeneral';
 import styled from 'styled-components';
 import VerticalNav from './components/VerticalNav';
 import SettingsProfile from './pages/SettingsProfile';
+import SettingsNotification from './pages/SettingsNotification';
 import SettingsExtensions from './pages/Extensions';
 import SettingsThemes from './pages/Themes';
 
@@ -51,11 +52,12 @@ function App() {
             {/* <InboxPage /> */}
             {/* <VerticalNav /> */}
             {/* <SettingsGeneral /> */}
+            {/* <SettingsProfile /> */}
+            <SettingsNotification />
             {/* <CalendarPage /> */}
             {/* <SettingsProfile /> */}
             {/* <SettingsExtensions /> */}
-            <SettingsThemes />
-               
+            {/* <SettingsThemes /> */}
           </MainContent>
         </Layout>
     );
