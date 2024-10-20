@@ -1,40 +1,19 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [recentSearches] = useState([
-    'Apple',
-    'Banana',
-    'Cherry',
-    'Date',
-    'Elderberry',
-    'Fig',
-    'Grape',
-    'Honeydew',
-  ]);
-  const [isVisible, setIsVisible] = useState(true); // New state to control visibility
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const [isVisible, setIsVisible] = useState(true); // Control visibility of the component
+  const navigate = useNavigate();
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearch = event => {
-    event.preventDefault();
-    console.log('Searching for:', searchTerm);
-    setSearchTerm(''); // Clear input after search
-  };
-
-  const handleRecentSearchClick = search => {
-    setSearchTerm(search);
-  };
-
   const handleClose = () => {
-    console.log('Closing search and going back');
     setIsVisible(false); // Hide the search component
     setSearchTerm(''); // Clear the search term
-    navigate('/dashboard'); // Navigate to dashboard
+    navigate('/dashboard'); // Navigate to the dashboard
   };
 
   // Inline styles
@@ -43,79 +22,83 @@ const Search = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '50vh',
-      backgroundColor: '#f9f9f9',
+      height: '100vh',
+      backgroundColor: '#f0f0f0',
     },
     searchBox: {
-      backgroundColor: '#3C715D',
-      borderRadius: '8px 0 0 8px',
+      backgroundColor: '#335a4f', // Dark green background
+      borderRadius: '8px', // Fully rounded corners
+      width: '400px',
       boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-      width: '500px',
-      position: 'relative',
-      display: 'flex',
+      padding: '10px',
     },
     searchBar: {
       display: 'flex',
-      width: '100%',
-      height: '100%', // Ensure it takes full height
-      position: 'relative', // Positioning context for the close button
+      alignItems: 'center',
+      position: 'relative',
     },
     searchInput: {
+      width: '100%',
       padding: '10px',
+      border: 'none',
+      borderRadius: '8px', // Rounded corners
       fontSize: '16px',
-      border: '1px solid #ccc',
-      borderRadius: '8px 0 0 8px',
-      width: '75%',
-      margin: '0',
-    },
-    searchButton: {
-      fontSize: '16px',
-      color: 'white',
-      backgroundColor: '#007bff',
-      borderRadius: '0 8px 8px 0',
-      cursor: 'pointer',
-      width: '115px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative',
-      zIndex: 1, // Ensure it appears below the close button
+      backgroundColor: '#f4f4f4', // Light background for input field
+      color: '#333', // Darker text for readability
     },
     closeButton: {
       position: 'absolute',
-      top: '0',
-      right: '0',
-      margin: '0', // No margin for absolute positioning
+      right: '10px',
+      top: '10px',
       fontSize: '16px',
-      color: 'white',
-      backgroundColor: 'transparent',
+      backgroundColor: 'black-light',
       border: 'none',
       cursor: 'pointer',
-      zIndex: 2, // Higher z-index to appear on top of the search button
+      color: 'black',
     },
-    dropdown: {
-      position: 'absolute',
-      top: '100%',
-      left: 0,
-      right: 0,
-      backgroundColor: 'white',
-      border: '1px solid #ccc',
-      borderRadius: '0 0 8px 8px',
-      maxHeight: '200px',
-      overflowY: 'auto',
-      zIndex: 1000,
+    menuList: {
+      listStyle: 'none',
+      padding: '0',
+      margin: '20px 0 0',
+      maxHeight: '200px', // Limit the height to allow scrolling
+      overflowY: 'auto', // Enable vertical scrolling
     },
-    dropdownItem: {
+    menuItem: {
       padding: '10px',
+      display: 'flex',
+      alignItems: 'center',
       cursor: 'pointer',
-      border: '1px solid rgba(0, 0, 0, 0.1)',
-      borderRadius: '4px',
-      margin: '5px 5px',
+      borderBottom: '1px solid #ccc',
       transition: 'background-color 0.2s',
     },
-    dropdownItemHover: {
-      backgroundColor: '#f0f0f0',
+    menuItemIcon: {
+      marginRight: '10px',
     },
+    menuItemText: {
+      color: '#fff',
+    },
+    // Scrollbar styles for WebKit browsers (Chrome, Safari)
+     scrollBar: {
+ overflowY: 'auto', // Enable scrolling
+  scrollbarWidth: 'thin', // Thin scrollbar for Firefox
+  scrollbarColor: '#ffffff #335a4f', // Custom color for Firefox (thumb, track)
+  paddingRight: '10px', // Add space between the content and the scrollbar
+  borderRadius: '10px', // Border radius for the entire scrollbar container (in Firefox)
+    },
+    scrollBarWebkit: {
+      '::-webkit-scrollbar': {
+        width: '5px', // Slightly thicker scrollbar for better visibility
+      },
+      '::-webkit-scrollbar-thumb': {
+        backgroundColor: '#ffffff', // White scrollbar thumb
+        borderRadius: '8px', // Rounded corners for the scroll thumb
+      },
+      '::-webkit-scrollbar-track': {
+        backgroundColor: '#335a4f', // Dark green background for scrollbar track
+        borderRadius: '8px', // Rounded corners for track as well
+      },
+    },
+
   };
 
   // If the component is not visible, return null (don't render anything)
@@ -124,7 +107,7 @@ const Search = () => {
   return (
     <div style={styles.container}>
       <div style={styles.searchBox}>
-        <form onSubmit={handleSearch} style={styles.searchBar}>
+        <div style={styles.searchBar}>
           <input
             type="text"
             placeholder="Search..."
@@ -132,29 +115,43 @@ const Search = () => {
             onChange={handleInputChange}
             style={styles.searchInput}
           />
-          <button type="submit" style={styles.searchButton}>
-            Search
-          </button>
           <button type="button" onClick={handleClose} style={styles.closeButton}>
             ✖
           </button>
-        </form>
-        <div style={styles.dropdown}>
-          {recentSearches.map((search, index) => (
-            <div
-              key={index}
-              style={styles.dropdownItem}
-              onClick={() => handleRecentSearchClick(search)}
-              onMouseEnter={e =>
-                (e.currentTarget.style.backgroundColor =
-                  styles.dropdownItemHover.backgroundColor)}
-              onMouseLeave={e =>
-                (e.currentTarget.style.backgroundColor = 'white')}
-            >
-              {search}
-            </div>
-          ))}
         </div>
+
+        {/* Menu Items */}
+        <ul style={{ ...styles.menuList, ...styles.scrollBar }}>
+          <li style={styles.menuItem}>
+            <span style={styles.menuItemIcon}>📥</span>
+            <span style={styles.menuItemText}>Inbox</span>
+          </li>
+          <li style={styles.menuItem}>
+            <span style={styles.menuItemIcon}>📅</span>
+            <span style={styles.menuItemText}>Upcoming</span>
+          </li>
+          <li style={styles.menuItem}>
+            <span style={styles.menuItemIcon}>📆</span>
+            <span style={styles.menuItemText}>Today</span>
+          </li>
+          <li style={styles.menuItem}>
+            <span style={styles.menuItemIcon}>🏷️</span>
+            <span style={styles.menuItemText}>Labels</span>
+          </li>
+          {/* Repeat for more items to test scrolling */}
+          <li style={styles.menuItem}>
+            <span style={styles.menuItemIcon}>📥</span>
+            <span style={styles.menuItemText}>Inbox</span>
+          </li>
+          <li style={styles.menuItem}>
+            <span style={styles.menuItemIcon}>📅</span>
+            <span style={styles.menuItemText}>Upcoming</span>
+          </li>
+          <li style={styles.menuItem}>
+            <span style={styles.menuItemIcon}>📆</span>
+            <span style={styles.menuItemText}>Today</span>
+          </li>
+        </ul>
       </div>
     </div>
   );
