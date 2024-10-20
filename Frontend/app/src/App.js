@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Search from './components/Search';
 import Sidebar from './components/sidebar';
 import CalendarPage from './components/Upcoming/CalenderPage';
@@ -10,6 +10,8 @@ import SettingsGeneral from './pages/SettingsGeneral';
 import styled from 'styled-components';
 import VerticalNav from './components/VerticalNav';
 import SettingsProfile from './pages/SettingsProfile';
+import SettingsExtensions from './pages/Extensions';
+import SettingsThemes from './pages/Themes';
 
 const Layout = styled.div`
   display: flex; /* Makes it a flex container */
@@ -49,8 +51,10 @@ function App() {
             {/* <InboxPage /> */}
             {/* <VerticalNav /> */}
             {/* <SettingsGeneral /> */}
-            <CalendarPage />
-            <SettingsProfile />
+            {/* <CalendarPage /> */}
+            {/* <SettingsProfile /> */}
+            {/* <SettingsExtensions /> */}
+            <SettingsThemes />
                
           </MainContent>
         </Layout>
