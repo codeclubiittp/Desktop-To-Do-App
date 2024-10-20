@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Search from './components/Search';
 import Sidebar from './components/sidebar';
+import CalendarPage from './components/Upcoming/CalenderPage';
 import TaskList from './components/tasklist';
 import TodayPage from './pages/Today';
 import InboxPage from './pages/Inbox';
@@ -10,6 +11,8 @@ import styled from 'styled-components';
 import VerticalNav from './components/VerticalNav';
 import SettingsProfile from './pages/SettingsProfile';
 import SettingsNotification from './pages/SettingsNotification';
+import SettingsExtensions from './pages/Extensions';
+import SettingsThemes from './pages/Themes';
 
 const Layout = styled.div`
   display: flex; /* Makes it a flex container */
@@ -51,6 +54,10 @@ function App() {
             {/* <SettingsGeneral /> */}
             {/* <SettingsProfile /> */}
             <SettingsNotification />
+            {/* <CalendarPage /> */}
+            {/* <SettingsProfile /> */}
+            {/* <SettingsExtensions /> */}
+            {/* <SettingsThemes /> */}
           </MainContent>
         </Layout>
     );

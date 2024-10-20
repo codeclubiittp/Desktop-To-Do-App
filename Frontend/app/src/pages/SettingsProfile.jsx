@@ -211,13 +211,13 @@ const Body = styled.div`
 
 function SettingsProfile() {
     return (
-        <div className="container">
+        <div className="container" style={{"marginLeft": "-80px","marginTop" : "-20px"}}    >
             <Heading> 
-            <h1  style={{ color: '#16423C' }}>Settings</h1>
+                <h1  style={{ color: '#16423C'}}>Settings</h1>
             </Heading>
             <Body>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0m0 6a5 5 0 0 0-5 5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3a5 5 0 0 0-5-5z" clip-rule="evenodd"/></svg>
-                <span className="span">Account</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="21px" height="21px" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0m0 6a5 5 0 0 0-5 5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3a5 5 0 0 0-5-5z" clip-rule="evenodd"/></svg>
+                <span className="span" style={{"marginTop" : "-200px", "fontSize" : "27px"}}>Account</span>
                 <hr></hr>
                 <div className="cont">
                     <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style={{width: '150px', height: '150px', borderRadius: '50%'}}></img>
@@ -232,12 +232,12 @@ function SettingsProfile() {
                     <h2>Name</h2>
                     <input></input>
                 </div>
-                <h2>Email</h2>
+                <h2 style={{color: '#16423C'}}>Email</h2>
                 <div className="all util">
                     <text>abc@gmail.com</text>
                     <button>Change Email</button>
                 </div>
-                <h2>Password</h2>
+                <h2 style={{color: '#16423C'}}>Password</h2>
                 <div className="allnew">
                     <button className="changepwd">Change Password</button>
                 </div>
