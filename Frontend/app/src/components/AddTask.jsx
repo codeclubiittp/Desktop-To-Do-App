@@ -63,10 +63,26 @@ const handleEmailConfirmation = () => {
 setShowEmailDropdown(false);
 };
 
+const BellIcon = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+      style={{ stroke: 'black', strokeWidth: 2, cursor: 'pointer' }} // Adjust stroke color and width
+    >
+      <path
+        d="M12 22c1.1 0 2-.9 2-2H10c0 1.1.9 2 2 2zM18 8c0-4-3-7-6-7S6 4 6 8c0 4-3 6-3 8h18c0-2-3-4-3-8z"
+        fill="none"
+      />
+    </svg>
+  );
+
 return (
 <div style={styles.addTaskContainer}>
 <div style={styles.globalSearch}>
-<input type="text" placeholder="Global search..." style={styles.searchInput} />
+        <input type="text" placeholder="Global search...  " style={styles.searchInput} />  
 </div>
 <form onSubmit={handleSubmit} style={styles.taskForm}>
 <h2 style={styles.heading}>Add Task</h2>
@@ -80,7 +96,7 @@ style={styles.taskInput}
 />
 
 <div style={styles.selectForContainer}>
-In:
+<span style={styles.inText}>In:</span>
 <select style={styles.taskSelect}>
 <option value="">Select list...</option>
 {/* Add your list options here */}
@@ -126,7 +142,7 @@ style={styles.taskTextarea}
 />
 
 <div style={styles.subtaskContainer}>
-<label style={styles.label}>Add Subtask</label>
+{/* <label style={styles.label}>Add Subtask</label> */}
 {subtasks.map((subtask, index) => (
 <div key={index} style={styles.subtaskInputContainer}>
 <input
@@ -151,7 +167,7 @@ placeholder="Subtask"
 
 <div style={styles.dateContainer}>
 <div style={styles.dateInput}>
-<label>Start:</label>
+<span style={styles.inText}>Start date:</span>
 <input
 type="date"
 value={startDate}
@@ -160,7 +176,7 @@ style={styles.smallDatePicker} // Use the new style here
 />
 </div>
 <div style={styles.dateInput}>
-<label>End:</label>
+<span style={styles.inText}>End date:</span>
 <input
 type="date"
 value={endDate}
@@ -170,13 +186,16 @@ style={styles.smallDatePicker} // Use the new style here
 </div>
 </div>
 
+<div style={styles.buttonContainer1}>
 <div style={styles.buttonContainer}>
-<button type="button" style={styles.cancelBtn}>
-Cancel
-</button>
-<button type="submit" style={styles.addTaskBtn}>
-Add task
-</button>
+  <button type="button" style={styles.cancelBtn}>
+    Cancel
+  </button>
+  <button type="submit" style={styles.addTaskBtn}>
+    Add task
+  </button>
+</div>
+
 </div>
 </form>
 </div>
@@ -194,7 +213,15 @@ margin: 'auto',
 },
 globalSearch: {
 marginBottom: '20px',
+width: '95%',
 },
+buttonContainer1: {
+    display: 'flex',
+    justifyContent: 'center', // Centers buttons horizontally
+    gap: '10px', // Optional: adds space between buttons
+    marginTop: '20px', // Optional: adds space above buttons
+    marginRight: '10px', // Optional: adds space
+  },
 searchInput: {
 width: '100%',
 padding: '10px',
@@ -284,11 +311,12 @@ color: '#007bff',
 cursor: 'pointer',
 },
 removeSubtaskBtn: {
-backgroundColor: 'transparent',
-border: 'none',
-color: '#dc3545',
-cursor: 'pointer',
-fontSize: '1.2rem',
+backgroundColor: 'transparent', // Change to your preferred background color if needed
+  border: 'none',
+  color: 'black', // Change text color to black
+  cursor: 'pointer',
+  fontSize: '1rem', // Adjust the font size to make the button smaller
+  padding: '5px 10px', // Adjust padding to reduce size
 },
 attachmentInput: {
 marginBottom: '10px',
@@ -297,6 +325,11 @@ dateContainer: {
 display: 'flex',
 justifyContent: 'space-between',
 marginBottom: '10px',
+},
+bellIcon: {
+  marginLeft: '10px', // Space between the search input and icon
+  alignSelf: 'center', // Center the icon vertically
+  fontSize: '1.5rem', // Adjust size as needed
 },
 dateInput: {
 flex: '1',
@@ -311,31 +344,36 @@ border: '1px solid #ccc',
 buttonContainer: {
 display: 'flex',
 justifyContent: 'space-between',
+marginRight: '10px', // Optional: adds space
 },
 cancelBtn: {
 padding: '10px 20px',
 backgroundColor: '#f8f9fa',
 border: '1px solid #ccc',
-borderRadius: '5px',
+borderRadius: '100px',
 cursor: 'pointer',
+marginRight: '50px', // Optional: adds space
 },
 addTaskBtn: {
 padding: '10px 20px',
 backgroundColor: '#007bff',
 color: '#fff',
 border: 'none',
-borderRadius: '5px',
+borderRadius: '100px',
 cursor: 'pointer',
 },
 confirmButton: {
 marginTop: '10px',
 padding: '5px 10px',
-backgroundColor: '#007bff',
+backgroundColor: '#065f46',
 color: '#fff',
 border: 'none',
 borderRadius: '5px',
 cursor: 'pointer',
 },
+inText: {
+    marginRight: '5px', // Add a small space after "In:"
+  },
 };
 
 export default AddTask;
