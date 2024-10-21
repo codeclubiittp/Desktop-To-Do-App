@@ -3,6 +3,7 @@ import React from 'react';
 import Search from './components/Search';
 import Sidebar from './components/sidebar';
 import CalendarPage from './components/Upcoming/CalenderPage';
+import SendInvite from './components/Invite/SendInvite';
 import TaskList from './components/tasklist';
 import TodayPage from './pages/Today';
 import InboxPage from './pages/Inbox';
