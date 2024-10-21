@@ -1,4 +1,4 @@
 # Desktop-To-Do-App
 
 
-Author : Ikshitha
+Authors : Aniket, Ikshitha, Mokshith, Jaimin
