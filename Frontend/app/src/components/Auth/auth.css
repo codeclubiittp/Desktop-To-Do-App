@@ -1,0 +1,103 @@
+.auth-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.auth-page .form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #DCDEDC;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid #252222;
+}
+
+.auth-page .form-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.auth-page .form-container p {
+    font-size: 14px;
+    color: #777777;
+    margin-bottom: 20px;
+}
+
+
+.auth-page .input-group {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.auth-page .input-group input {
+    width: 10%; 
+    padding: 10px  10px; 
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #4CAF50;
+    transition: border-color 0.3s ease;
+    box-sizing: content-box;
+}
+
+/* Icons */
+.auth-page .input-group .icon {
+    position: absolute;
+    left: 20px;
+    top: 10%;
+    transform: translateY(-50%);
+    color: #4f5594;
+}
+
+/* Focus on Input */
+.auth-page .input-group input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Button */
+.auth-page .submit-btn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.auth-page .submit-btn:hover {
+    background-color: #1a1a1b;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .auth-page .form-container {
+        max-width: 90%;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .auth-page .form-container {
+        max-width: 80%;
+        padding: 50px;
+    }
+}
