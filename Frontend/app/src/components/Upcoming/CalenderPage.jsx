@@ -95,7 +95,7 @@ const Calendar = () => {
         >
           Today
         </button>
-        {['month', 'year', 'week', 'day'].map((option) => (
+        {['week'].map((option) => (
           <button
             key={option}
             onClick={() => setView(option)}
