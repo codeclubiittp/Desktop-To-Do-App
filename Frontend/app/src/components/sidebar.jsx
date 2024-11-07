@@ -77,7 +77,11 @@ const All = styled.div`
 function Sidebar(props){
 
     const [sidebar, setSidebar] = useState(true);
-    const showSidebar = () => setSidebar(!sidebar);
+    const showSidebar = () => {
+        setTimeout(() => {
+          setSidebar(!sidebar); // Toggles the sidebar state after the delay
+        }, 100); // Delay of 500ms (0.5 seconds)
+      };
 
     class Side extends React.Component {
     
@@ -95,14 +99,14 @@ function Sidebar(props){
     
             
             return (
-                <div >
+                <div>
                     <div className="item">
                         <i className="fa fa-home"></i>
                         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Icon Image"/>         
                         <span className="user">Jaimin</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M427.68 351.43C402 320 383.87 304 383.87 217.35C383.87 138 343.35 109.73 310 96c-4.43-1.82-8.6-6-9.95-10.55C294.2 65.54 277.8 48 256 48s-38.21 17.55-44 37.47c-1.35 4.6-5.52 8.71-9.95 10.53c-33.39 13.75-73.87 41.92-73.87 121.35C128.13 304 110 320 84.32 351.43C73.68 364.45 83 384 101.61 384h308.88c18.51 0 27.77-19.61 17.19-32.57M320 384v16a64 64 0 0 1-128 0v-16"/></svg>          
-                        <i className="fa fa-bars" onClick={showSidebar}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" ><path fill="currentColor" d="m16.41 18.16l-5.66-5.66l5.66-5.66l.7.71l-4.95 4.95l4.95 4.95zm-4 0L6.75 12.5l5.66-5.66l.7.71l-4.95 4.95l4.95 4.95z"/></svg> 
+                        <i className="fa fa-bars" onClick={showSidebar} style={{"borderWidth":"0","marginLeft":"10px","marginTop":"10px","cursor":"pointer"}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 16 16"><path fill="#16423C" fill-rule="evenodd" d="M6 3.5h6A1.5 1.5 0 0 1 13.5 5v6a1.5 1.5 0 0 1-1.5 1.5H6zm-1.5 0H4A1.5 1.5 0 0 0 2.5 5v6A1.5 1.5 0 0 0 4 12.5h.5zM1 5a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3z" clip-rule="evenodd"/></svg>          
                         </i>
                             
     
@@ -142,14 +146,6 @@ function Sidebar(props){
                             <span>Today</span>
                         </a>
                     </div>
-                    <div className="item">
-                        <a href="/dashboard">
-                            <i className="fa fa-home"></i>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/></svg>
-                            <span>Labels</span>
-                        </a>
-                    </div>
-    
                     <div className="item">
                         <a href="/dashboard">
                             <i className="fa fa-home"></i>
@@ -210,11 +206,10 @@ function Sidebar(props){
 
     return (
         <All>
-            <div className="container">
-                {sidebar ?  <button className="hamburger">
+            <div className="container" >
+                {sidebar ?  <button className="hamburger" style={{"backgroundColor":"white", "borderWidth":"0","marginLeft":"10px","marginTop":"10px","cursor":"pointer"}}>
                     <i className="fa fa-bars" onClick={showSidebar}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m6.59 6.84l5.66 5.66l-5.66 5.66l-.7-.71l4.95-4.95l-4.95-4.95zm4 0l5.66 5.66l-5.66 5.66l-.7-.71l4.95-4.95l-4.95-4.95z"/></svg>
-                    </i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 16 16"><path fill="#16423C" fill-rule="evenodd" d="M6 3.5h6A1.5 1.5 0 0 1 13.5 5v6a1.5 1.5 0 0 1-1.5 1.5H6zm-1.5 0H4A1.5 1.5 0 0 0 2.5 5v6A1.5 1.5 0 0 0 4 12.5h.5zM1 5a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3z" clip-rule="evenodd"/></svg>                    </i>
                 </button>  : '' }
                 
                 {sidebar ? '' : <StyledSideElement><Side /></StyledSideElement> }

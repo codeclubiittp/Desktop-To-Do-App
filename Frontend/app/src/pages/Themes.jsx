@@ -1,230 +1,146 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { SketchPicker } from 'react-color';
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Icons for navigation
 
-
-const Element = styled.div`
-    .tasklist{
-        display: flex;
-        margin-bottom: -15px;
-    }
-
-    button{
-        background-color: white;
-        border: none;
-        cursor: pointer;
-        color: #16423C;
-        margin-top: 10px;
-    }
-
-    h1{
-        font-size: 17px;
-        color: #16423C;
-        font-weight: 650;
-    }
-
-    .element{
-        margin-left: 55px;
-    }
-
-    .task{
-        margin-left: 55px;
-        h3{
-            color: #16423C;
-            margin-left: 29px;
-            margin-top:-25px;
-            font-size: 19px;
-        }
-        svg{
-            weight: 10px;
-            color: #16423C;
-            height: 18px;
-            width: 18px;
-        }
-    }
-
-   
+const CalendarContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 50px repeat(12, 1fr);
+  gap: 10px;
+  padding: 20px;
 `;
 
-
-const All = styled.div`
-    margin-top: -20px;
-    h5{
-        color: #16423C;
-        margin-top: -1px;
-        margin-left: 7px;
-    }
-    svg{
-        color: #16423C;
-    }
-    display: flex;
+const DayHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
 `;
 
-const Heading = styled.div`
-    margin-top: 15px;
-    margin-left: 150px;
-    h5{
-        color: #16423C;
-        margin-top: -1px;
-        margin-left: 7px;
-    }
-    svg{
-        color: #16423C;
-    }
-    font-size: 20px;
-    display: flex;
+const EventBox = styled.div`
+  position: relative;
+  background-color: ${(props) => props.bgColor};
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: ${(props) => props.height};
 `;
 
-const Body = styled.div`
-    margin-top: 30px;
-    margin-left: 150px;
-    align-items: center; /* This will vertically align span and svg */
-    span{
-        color: #16423C;
-        margin-left: 8px; /* Adjust as needed */
-        font-size: 30px;
-    }
-    svg{
-        color: #16423C;
-        margin-right: 10px; /* Add some margin to space it from span */
-    }
-    hr{
-        margin-left: -4px;
-        width: 60%;
-        margin-top: 10px;
-        color: #16423C;
-    }
-    image{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-
-    }
-    .allnew {
-        margin-top: -30px;
-        margin-left: 115px;
-        button {
-            margin-top: 30px;
-            margin-left: -120px;
-            padding: 10px;
-            border: 2px solid #16423C;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #ffffff;
-            color: #16423C;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #16423C;
-            color: white;
-        }
-    }
-    .all {
-        color: #16423C;
-        select {
-            margin-top: -2px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 30%;
-            font-size: 16px;
-            background-color: #ffffff;
-        }
-        input {
-            margin-top: -2px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 28.5%;
-            font-size: 16px;
-            background-color: #ffffff;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 10%;
-            font-size: 16px;
-        }
-    }
-    .util {
-        display: flex;
-        margin-top: 20px;
-        text {
-            font-size: 16px;
-        }
-        button {
-            margin-top: 30px;
-            margin-left: -120px;
-            padding: 10px;
-            border: 2px solid #16423C;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #ffffff;
-            color: #16423C;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #16423C;
-            color: white;
-        }
-    }
-    .cont{
-        display: flex;
-        margin-top: 20px;
-        button {
-            padding: 10px 50px;
-            border: 2px solid #16423C;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #ffffff;
-            color: #16423C;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #16423C;
-            color: white;
-        }
-
-        .changePhoto {
-            margin-top: 60px; /* Adjust the margin for Change Photo button */
-            margin-left: 50px; /* Adjust the margin for Change Photo button */
-            button {
-                margin: 0 15px 0 0; /* Adjust button margin */
-            }
-        }
-
-        .removePhoto {
-            margin-top: 60px;
-            margin-left: 50px; /* Adjust the margin for Remove Photo button */
-            button {
-                margin: 0; /* Adjust button margin */
-            }
-        }
-    }
+const EventTitle = styled.div`
+  font-size: 14px;
+  font-weight: bold;
 `;
 
-function SettingsThemes() {
-    return (
-        <div className="container" style={{"marginLeft": "-80px","marginTop" : "-20px"}}    >
-            <Heading> 
-                <h1  style={{ color: '#16423C'}}>Settings</h1>
-            </Heading>
-            <Body>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21px" height="21px" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0m0 6a5 5 0 0 0-5 5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3a5 5 0 0 0-5-5z" clip-rule="evenodd"/></svg>
-                <span className="span" style={{"marginTop" : "-200px", "fontSize" : "27px"}}>Account</span>
-                <hr></hr>
-                <SketchPicker />
-            </Body>
-        </div>
-    );
-}
+const EventTime = styled.div`
+  font-size: 12px;
+  margin-top: 5px;
+`;
 
-export default SettingsThemes;
+const AttendeeAvatars = styled.div`
+  display: flex;
+  margin-top: 10px;
+  justify-content: flex-end;
+`;
+
+const Avatar = styled.div`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-left: -10px;
+  border: 2px solid white;
+`;
+
+const HeaderNavigation = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const NavButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #636e72;
+`;
+
+const WeekIndicator = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const events = {
+  "2024-05-12": [
+    { day: "Monday", time: "10:00 AM", title: "Shooting Stars", color: "#00b894", attendees: 2, height: "80px" },
+    { day: "Monday", time: "4:00 PM", title: "The Amazing Hubble", color: "#0984e3", attendees: 1, height: "120px" },
+  ],
+  "2024-05-19": [
+    { day: "Tuesday", time: "12:00 PM", title: "The Amazing Hubble", color: "#fdcb6e", attendees: 2, height: "120px" },
+    { day: "Wednesday", time: "3:00 PM", title: "Choosing a Quality Telescope Set", color: "#6c5ce7", attendees: 3, height: "100px" },
+  ],
+  "2024-05-26": [
+    { day: "Thursday", time: "10:00 AM", title: "Astronomy Binoculars", color: "#e17055", attendees: 2, height: "120px" },
+    { day: "Friday", time: "11:00 AM", title: "Astronomy Binoculars", color: "#e84393", attendees: 2, height: "100px" },
+  ],
+};
+
+const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+const Calendar = () => {
+  const [currentWeek, setCurrentWeek] = useState("2024-05-12");
+
+  const handlePreviousWeek = () => {
+    const newWeek = new Date(currentWeek);
+    newWeek.setDate(newWeek.getDate() - 7); // Move back by 7 days
+    setCurrentWeek(newWeek.toISOString().split("T")[0]);
+  };
+
+  const handleNextWeek = () => {
+    const newWeek = new Date(currentWeek);
+    newWeek.setDate(newWeek.getDate() + 7); // Move forward by 7 days
+    setCurrentWeek(newWeek.toISOString().split("T")[0]);
+  };
+
+  return (
+    <div>
+      <HeaderNavigation>
+        <NavButton onClick={handlePreviousWeek}>
+          <FaChevronLeft />
+        </NavButton>
+        <WeekIndicator>{new Date(currentWeek).toDateString()} - Week</WeekIndicator>
+        <NavButton onClick={handleNextWeek}>
+          <FaChevronRight />
+        </NavButton>
+      </HeaderNavigation>
+
+      <CalendarContainer>
+        {daysOfWeek.map((day) => (
+          <DayHeader key={day}>{day}</DayHeader>
+        ))}
+
+        {events[currentWeek]?.map((event, index) => (
+          <EventBox key={index} bgColor={event.color} height={event.height}>
+            <EventTitle>{event.title}</EventTitle>
+            <EventTime>{event.time}</EventTime>
+            <AttendeeAvatars>
+              {[...Array(event.attendees)].map((_, idx) => (
+                <Avatar key={idx} />
+              ))}
+            </AttendeeAvatars>
+          </EventBox>
+        ))}
+      </CalendarContainer>
+    </div>
+  );
+};
+
+export default Calendar;
