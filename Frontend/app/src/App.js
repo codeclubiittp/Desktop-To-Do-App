@@ -14,6 +14,7 @@ import SettingsProfile from './pages/SettingsProfile';
 import SettingsNotification from './pages/SettingsNotification';
 import SettingsExtensions from './pages/Extensions';
 import SettingsThemes from './pages/Themes';
+import { SignedIn, SignedOut, SignInButton, SignOutButton,  UserButton } from '@clerk/clerk-react'
 
 const Layout = styled.div`
   display: flex; /* Makes it a flex container */
@@ -45,7 +46,14 @@ function App() {
 //                 </Routes>
 //             </div>
 //         </Router>
-        <Layout>
+      <header>
+          <SignedOut>
+  <SignInButton />
+</SignedOut>
+<SignedIn>
+  {/* <UserButton /> */}
+  <Layout>
+  <SignOutButton />
           <Sidestyle>
             <Sidebar />
           </Sidestyle>
@@ -61,6 +69,26 @@ function App() {
             {/* <SettingsThemes /> */}
           </MainContent>
         </Layout>
+  
+</SignedIn>
+
+</header>
+        // <Layout>
+        //   <Sidestyle>
+        //     <Sidebar />
+        //   </Sidestyle>
+        //   <MainContent>
+        //     {/* <InboxPage /> */}
+        //     {/* <VerticalNav /> */}
+        //     {/* <SettingsGeneral /> */}
+        //     {/* <SettingsProfile /> */}
+        //     <SettingsNotification />
+        //     {/* <CalendarPage /> */}
+        //     {/* <SettingsProfile /> */}
+        //     {/* <SettingsExtensions /> */}
+        //     {/* <SettingsThemes /> */}
+        //   </MainContent>
+        // </Layout>
     );
 }
 
