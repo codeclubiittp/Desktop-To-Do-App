@@ -2,7 +2,8 @@ import React from 'react';
 // import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Search from './components/Search';
 import Sidebar from './components/sidebar';
-import Calendar from './components/Upcoming/CalenderPage';
+import CalendarPage from './components/Upcoming/CalenderPage';
+import SendInvite from './components/Invite/SendInvite';
 import TaskList from './components/tasklist';
 import TodayPage from './pages/Today';
 import InboxPage from './pages/Inbox';
@@ -10,6 +11,7 @@ import SettingsGeneral from './pages/SettingsGeneral';
 import styled from 'styled-components';
 import VerticalNav from './components/VerticalNav';
 import SettingsProfile from './pages/SettingsProfile';
+import SettingsNotification from './pages/SettingsNotification';
 import SettingsExtensions from './pages/Extensions';
 import SettingsThemes from './pages/Themes';
 
@@ -85,7 +87,12 @@ function App() {
             <Calendar />            {/* <SettingsProfile /> */}
             {/* <SettingsExtensions /> */}
             {/* <SettingsThemes /> */}
-               
+            {/* <SettingsProfile /> */}
+            <SettingsNotification />
+            {/* <CalendarPage /> */}
+            {/* <SettingsProfile /> */}
+            {/* <SettingsExtensions /> */}
+            {/* <SettingsThemes /> */}
           </MainContent>
         </Layout>
     );
