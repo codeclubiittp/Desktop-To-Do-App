@@ -14,7 +14,16 @@ import SettingsProfile from './pages/SettingsProfile';
 import SettingsNotification from './pages/SettingsNotification';
 import SettingsExtensions from './pages/Extensions';
 import SettingsThemes from './pages/Themes';
+import AddTask from './components/AddTask';
 import { SignedIn, SignedOut, SignInButton, SignOutButton,  UserButton } from '@clerk/clerk-react'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
 
 const Layout = styled.div`
   display: flex; /* Makes it a flex container */
@@ -28,7 +37,7 @@ const Sidestyle = styled.div`
 
 const MainContent = styled.div`
   flex-grow: 1; 
-  background-color: #ffffff;
+  background-color: #f5f7f8;
   padding: 20px;
 `;
 
@@ -66,47 +75,36 @@ const events = [
 
 function App() {
     return (
-//         <Router>
-//             <div>
-//                 <Sidebar /> {/* If you want a sidebar in all routes */}
-//                 <nav>
-//                     <Link to="/search">Go to Search</Link>
-//                 </nav>
-//                 <Routes>
-//                     <Route path="/search" element={<Search />} />
-//                 </Routes>
-//             </div>
-//         </Router>
-      <header>
+      <Router>
+        <header>
           <SignedOut>
-  <SignInButton />
-</SignedOut>
-<SignedIn>
-  {/* <UserButton /> */}
-  <Layout>
-  <SignOutButton />
-          <Sidestyle>
-            <Sidebar />
-          </Sidestyle>
-          <MainContent>
-            {/* <InboxPage /> */}
-            {/* <VerticalNav /> */}
-            {/* <SettingsGeneral /> */}
-            <Calendar />            {/* <SettingsProfile /> */}
-            {/* <SettingsExtensions /> */}
-            {/* <SettingsThemes /> */}
-            {/* <SettingsProfile /> */}
-            <SettingsNotification />
-            {/* <CalendarPage /> */}
-            {/* <SettingsProfile /> */}
-            {/* <SettingsExtensions /> */}
-            {/* <SettingsThemes /> */}
-          </MainContent>
-        </Layout>
-  
-</SignedIn>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <Layout>
+              <Sidestyle>
+                <Sidebar />
+              </Sidestyle>
+              <MainContent>
+                <SignOutButton />
+                {/* <Search /> */}
+                <Routes>
+                  <Route path="/" element={<TodayPage />} />
+                  <Route path="/inbox" element={<InboxPage />} />
+                  <Route path="/settings" element={<SettingsGeneral />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/calendar" element={<CalendarPage />} />
+                  <Route path='/add' element={<AddTask />} />
+                </Routes>
+              </MainContent>
+            </Layout>
+          </SignedIn>
+        </header>
+      </Router>
 
-</header>
+
+
+
         // <Layout>
         //   <Sidestyle>
         //     <Sidebar />
