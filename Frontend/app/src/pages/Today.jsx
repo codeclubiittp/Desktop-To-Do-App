@@ -4,7 +4,7 @@ import TaskList from "../components/tasklist";
 import { useState,useEffect } from "react";
 
 
-const tasks = [{date: "1 Jan", task: "lorem ipsum"}, {date: "2 Jan", task: "lorem ipsum"}, {date: "3 Jan", task: "lorem ipsum"}, {date: "4 Jan", task: "lorem ipsum"}, {date: "5 Jan", task: "lorem ipsum"}];
+const tasks = [{date: "1 Jan", task: "lorem ipsum", description: "task description"}, {date: "2 Jan", task: "lorem ipsum", description: "task description"}, {date: "3 Jan", task: "lorem ipsum", description: "task description"}, {date: "4 Jan", task: "lorem ipsum", description: "task description"}, {date: "5 Jan", task: "lorem ipsum", description: "task description"}];
 
 
 const Element = styled.div`
@@ -112,7 +112,7 @@ function TodayPage(){
             </div>
             <div className="element">
                 {overdue && tasks.map((task,index) => (
-                    <TaskList key={index} index={index} date={task.date} task={task.task} />
+                    <TaskList key={index} index={index} date={task.date} task={task.task} description={task.description}/>
                 ))}
             </div>
         </Element>
@@ -130,7 +130,7 @@ function TodayPage(){
             </div>
             <div className="element">
                 {today && tasks.map((task,index) => (
-                        <TaskList key={index} index={index} date={task.date} task={task.task} />
+                    <TaskList key={index} index={index} date={task.date} task={task.task} description={task.description}/>
                 ))}
             </div>
         </Element>
@@ -148,7 +148,7 @@ function TodayPage(){
             </div>
             <div className="element">
                 {completed && tasks.map((task,index) => (
-                        <TaskList key={index} index={index} date={task.date} task={task.task} />
+                    <TaskList key={index} index={index} date={task.date} task={task.task} description={task.description}/>
                 ))}
             </div>
             <hr style={{ width: "75%", marginLeft: "30px" }} />

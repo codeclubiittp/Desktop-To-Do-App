@@ -12,6 +12,8 @@ const client = new MongoClient(uri, {
     }
 });
 
+let createAddTaskWindow;
+
 // Function to create the main window
 function createMainWindow() {
     const mainWindow = new BrowserWindow({
@@ -61,6 +63,32 @@ async function run() {
         await client.close();
     }
 }
+
+async function savetaskToday(task){
+    try{
+        await client.connect();
+        const databse = client.db('Desktop-To-Do-App');
+        const today = database.collection('Today');
+
+        var temp = new Date();
+        var date = temp.getDate() + (temp.getMonth()+1)
+        task.timestamp = date;
+        const result = await today.insertOne(task);
+
+        console.log("Inserted document with _id:", result.insertedId);
+        return { success: true, id: result.insertedId };
+
+    } catch (error) {
+        console.error("Error inserting user:", error);
+        return { success: false, error: error.message };
+    } finally {
+        await client.close();
+    }
+}
+
+ipcMain.handle('add-task',async(event,task)=>{
+    return await savetaskToday(task);
+});
 
 // Set up Electron event listeners
 app.whenReady().then(createMainWindow);
