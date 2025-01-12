@@ -45,6 +45,15 @@
 }
 
 .auth-page .input-group input {
+    width: 50%; 
+    padding: 10px  10px; 
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #4CAF50;
+    transition: border-color 0.3s ease;
+    box-sizing: content-box;
+}
+.auth-page .input-group input #email {
     width: 10%; 
     padding: 10px  10px; 
     font-size: 14px;

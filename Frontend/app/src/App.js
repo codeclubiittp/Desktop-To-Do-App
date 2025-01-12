@@ -13,6 +13,7 @@ import SettingsProfile from "./pages/SettingsProfile";
 import LoginForm from "./components/Auth/Login";
 import SignupForm from "./components/Auth/Signup";
 import VerticalNav from "./components/VerticalNav";
+import SettingsComponent from "./components/Settings/settings";
 
 // Layout styling
 const Layout = styled.div`
@@ -51,6 +52,7 @@ function App() {
             <Route path="/settings/profile" element={<SettingsProfile />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/signup" element={<SignupForm />} />
+            <Route path="/settings" element={<SettingsComponent />} />
           </Routes>
         </MainContent>
       </Layout>
